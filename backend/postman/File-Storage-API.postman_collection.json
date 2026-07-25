@@ -1,0 +1,43 @@
+{
+  "info": {
+    "_postman_id": "d6d87c19-4231-4d70-8c51-file-storage",
+    "name": "File Storage API",
+    "schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json"
+  },
+  "variable": [
+    { "key": "baseUrl", "value": "http://localhost:8080" },
+    { "key": "fileId", "value": "" }
+  ],
+  "item": [
+    {
+      "name": "Upload file",
+      "request": {
+        "method": "POST",
+        "body": {
+          "mode": "formdata",
+          "formdata": [
+            { "key": "file", "type": "file", "src": "" },
+            { "key": "userId", "type": "text", "value": "demo-user" }
+          ]
+        },
+        "url": "{{baseUrl}}/api/files/upload"
+      }
+    },
+    {
+      "name": "List files",
+      "request": { "method": "GET", "url": "{{baseUrl}}/api/files?page=0&size=10" }
+    },
+    {
+      "name": "Get file details",
+      "request": { "method": "GET", "url": "{{baseUrl}}/api/files/{{fileId}}" }
+    },
+    {
+      "name": "Download file",
+      "request": { "method": "GET", "url": "{{baseUrl}}/api/files/{{fileId}}/download" }
+    },
+    {
+      "name": "Delete file",
+      "request": { "method": "DELETE", "url": "{{baseUrl}}/api/files/{{fileId}}" }
+    }
+  ]
+}
